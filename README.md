@@ -69,7 +69,7 @@ Please enter the path to the output PDF directory: path/to/output/
 
 ## Features
 
-Split Bulk printed Acceptance Letters PDF into separate PDF files for each individuals acceptance letter.
+Can accept user input to split bulk printed Acceptance Letters as a single PDF into individual PDF files for each acceptance letter while providing a progres bar for user feedback.
 
 ### User Input
 
