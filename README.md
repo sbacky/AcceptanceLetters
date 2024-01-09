@@ -1,6 +1,6 @@
 # Acceptance Letter Splitter
 
-The purpose of this project is to split the single PDF of all individuals acceptance letters into individual PDFs of each indiviuals acceptance letter where the PDF name is the account name in all caps. In ProSystems eFiling System, bulk printing acceptance letters produces a single PDF of all individuals acceptance letter. Each individuals acceptance letter must be separated and saved as its own PDF file using the account name as the filename.
+The purpose of this project is to split bulk printed Acceptance Letters from a single PDF into individual PDF files for each acceptance letter where the PDF name is the account name in all caps. In ProSystems eFiling System, bulk printing acceptance letters produces a single PDF file of all individuals acceptance letters. Each individual acceptance letter must be separated and saved as its own PDF file using the account name as the filename.
 
 This script runs in the command line and does not have a user interface. At most, it will prompt the user to enter a path to the pdf or path to an output directory. However, if the user sets these as environmental variables or uses the '.env' file, then no interaction from the user is required.
 
