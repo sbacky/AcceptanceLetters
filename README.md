@@ -97,7 +97,7 @@ Below is the list of technologies used in this project.
 
 ## Contributors
 
-* Neil Crum (nhc.crum@outlook.com)
+* Neil Crum
 
 ## License
 
