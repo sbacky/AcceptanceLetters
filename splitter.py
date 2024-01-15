@@ -9,7 +9,7 @@ from pypdf import PdfWriter, PdfReader, PageObject
 
 
 def sanitize_filename(filename: str):
-    valid_chars = "-_.()#& %s%s" % (string.ascii_letters, string.digits)
+    valid_chars = "-_.,()#& %s%s" % (string.ascii_letters, string.digits)
     # Replace '/' with '-'
     sanitized = filename.replace('/', '-')
     sanitized = ''.join(c for c in sanitized if c in valid_chars)
