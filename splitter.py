@@ -9,7 +9,7 @@ from pypdf import PdfWriter, PdfReader, PageObject
 
 
 def sanitize_filename(filename):
-    valid_chars = "-_.() %s%s" % (string.ascii_letters, string.digits)
+    valid_chars = "-_.()# %s%s" % (string.ascii_letters, string.digits)
     sanitized = ''.join(c for c in filename if c in valid_chars)
     return sanitized
 
@@ -31,6 +31,14 @@ def write_to_pdf(start: int, end: int, pages: list[Page], reader_pages: list[Pag
         if account_name:
             output_filename = f"{account_name.upper()}.pdf"
             output_path = os.path.join(output_directory, output_filename)
+
+            # Check if the file already exists and rename accordingly
+            counter = 1
+            while os.path.exists(output_path):
+                output_filename = f"{account_name.upper()}-{counter}.pdf"
+                output_path = os.path.join(output_directory, output_filename)
+                counter += 1
+
             with open(output_path, "wb") as output_pdf:
                 writer.write(output_pdf)
     except Exception as e:
