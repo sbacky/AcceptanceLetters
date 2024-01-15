@@ -16,7 +16,7 @@ def sanitize_filename(filename: str):
     return sanitized
 
 def extract_account_name(text):
-    account_name_pattern = r"Name: ([\w\s,\-\.]+)\s+e-Postmark:"
+    account_name_pattern = r"Name: ([\w\s,\-\.#/&]+)\s+e-Postmark:"
     match = re.search(account_name_pattern, text)
     return sanitize_filename(match.group(1).strip()) if match else None
 
