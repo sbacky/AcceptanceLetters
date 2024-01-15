@@ -55,7 +55,7 @@ cd path/to/AcceptanceLetters
 python main.py
 ```
 
-3. When prompted, input your PDF to be split path. If you set this path as an environemnt variable, skip this step
+3. When prompted, input your PDF to be split path. If you set this path as an environemnt variable, skip this step. Currently supports the following special characters: '#', '&', '/', '-', '_', '(', ')', and '.' in account names.
 
 ```console
 Please enter the path to the PDF file: path/to/pdf_file.pdf
