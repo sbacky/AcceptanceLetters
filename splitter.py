@@ -30,14 +30,9 @@ def write_to_pdf(start: int, end: int, pages: list[Page], reader_pages: list[Pag
                 account_name = extract_account_name(page.extract_text())
             writer.add_page(reader_pages[i])
 
-        print('-' * 20)
-        print("Account Name:", account_name)
-
         if account_name:
             output_filename = f"{account_name.upper()}.pdf"
             output_path = os.path.join(output_directory, output_filename)
-
-            print("Unsanitized Path:", output_path)
 
             # Check if the file already exists and rename accordingly
             counter = 1
@@ -45,8 +40,6 @@ def write_to_pdf(start: int, end: int, pages: list[Page], reader_pages: list[Pag
                 output_filename = f"{account_name.upper()}-{counter}.pdf"
                 output_path = os.path.join(output_directory, output_filename)
                 counter += 1
-
-            print('Sanitized Path', output_path)
 
             with open(output_path, "wb") as output_pdf:
                 writer.write(output_pdf)
