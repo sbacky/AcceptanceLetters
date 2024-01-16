@@ -43,6 +43,8 @@ def write_to_pdf(start: int, end: int, pages: list[Page], reader_pages: list[Pag
 
             with open(output_path, "wb") as output_pdf:
                 writer.write(output_pdf)
+        else:
+            print("No account name was found")
     except Exception as e:
         print(e.with_traceback())
     finally:
