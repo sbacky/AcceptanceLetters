@@ -20,7 +20,7 @@ def extract_account_name(text):
     match = re.search(account_name_pattern, text)
     return sanitize_filename(match.group(1).strip()) if match else None
 
-def write_to_pdf(start: int, end: int, pages: list[Page], reader_pages: list[PageObject], output_directory):
+def write_to_pdf(start: int, end: int, pages: list[Page], reader_pages: list[PageObject], output_directory, suffix):
     writer = PdfWriter()
     try:
         account_name = None
@@ -31,14 +31,14 @@ def write_to_pdf(start: int, end: int, pages: list[Page], reader_pages: list[Pag
             writer.add_page(reader_pages[i])
 
         if account_name:
-            output_filename = f"{account_name.upper()}.pdf"
+            output_filename = f"{account_name.upper()}.pdf" if suffix is None else f"{account_name.upper()} {suffix}.pdf"
             output_path = os.path.join(output_directory, output_filename)
 
             # Check if the file already exists and rename accordingly
             counter = 1
             while os.path.exists(output_path):
-                output_filename = f"{account_name.upper()}-{counter}.pdf"
-                output_path = os.path.join(output_directory, output_filename)
+                output_filename_counter = f"{output_filename}-{counter}.pdf"
+                output_path = os.path.join(output_directory, output_filename_counter)
                 counter += 1
 
             with open(output_path, "wb") as output_pdf:
@@ -48,7 +48,7 @@ def write_to_pdf(start: int, end: int, pages: list[Page], reader_pages: list[Pag
     finally:
         writer.close()
 
-def split_pdf(input_pdf_path, output_directory):
+def split_pdf(input_pdf_path, output_directory, suffix):
     report_start_pattern = r"Product:.*Category:.*IRS Center:"
     reader = PdfReader(input_pdf_path)
 
@@ -64,7 +64,7 @@ def split_pdf(input_pdf_path, output_directory):
             for i in tqdm(range(len(start_indexes))):
                 start = start_indexes[i]
                 end = start_indexes[i + 1] if i + 1 < len(start_indexes) else len(pages)
-                write_to_pdf(start, end, pdf.pages, reader.pages, output_directory)
+                write_to_pdf(start, end, pdf.pages, reader.pages, output_directory, suffix)
                 
     except Exception as e:
         print(e.with_traceback())

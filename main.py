@@ -43,11 +43,17 @@ def get_output_pdf_directory():
         else:
             print("Invalid directory path. Please try again.")
 
+def get_suffix():
+    print("Enter a suffix to add to the end of each filename. Leave blank and press enter to skip.")
+    suffix = input("Suffix: ")
+    return suffix if suffix != "" else None
+
 def main():
     load_dotenv()
     pdf_path = get_pdf_path()
     output_directory = get_output_pdf_directory()
-    split_pdf(pdf_path, output_directory)
+    suffix = get_suffix()
+    split_pdf(pdf_path, output_directory, suffix)
 
 if __name__ == "__main__":
     main()
