@@ -61,7 +61,14 @@ python main.py
 Please enter the path to the PDF file: path/to/pdf_file.pdf
 ```
 
-4. OPTIONAL - input your PDF output directory path. If you set this path as an environemnt variable, skip this step
+4. OPTIONAL - When prompted, input a suffix to be added to the end of each filename.
+
+```console
+Enter a suffix to add to the end of each filename. Leave blank and press enter to skip.
+Suffix: -asdf
+```
+
+5. OPTIONAL - input your PDF output directory path. If you set this path as an environemnt variable, skip this step
 
 ```console
 Please enter the path to the output PDF directory: path/to/output/
